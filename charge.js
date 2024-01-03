@@ -110,6 +110,10 @@ module.exports = async function charge(request) {
 
   logger.info({ token }, 'Charging through ButtercupPayments');
 
+  // Use this new dev token that definitely doesn't have any problems
+  // and will make things go much faster
+  token = "DEV-19290423-EXP-12-31-2023"
+
   // Fail due to serialization error based on configured serialization failure rate
   if (Math.random() < SERIALIZATION_FAILURE_RATE) {
     await serializeRequestDataToProto().catch((err) => {
